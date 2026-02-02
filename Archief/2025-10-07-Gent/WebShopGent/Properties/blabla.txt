@@ -1,0 +1,1 @@
+docker run --name pg2-mysql-db-gent -p 3308:3306 -e MYSQL_ROOT_PASSWORD=WachtW00rd -d mysql:8.0
