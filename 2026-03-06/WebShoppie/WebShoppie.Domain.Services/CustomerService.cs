@@ -2,6 +2,7 @@ using WebShoppie.Api.Contracts.Customers;
 using WebShoppie.Domain.Services.Interfaces;
 using WebShoppie.Domain.Services.Mapping;
 using WebShoppie.Persistence;
+using WebShoppie.Persistence.Exceptions;
 using WebShoppie.Persistence.Interfaces;
 
 namespace WebShoppie.Domain.Services;
@@ -36,7 +37,7 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
             customerRepository.UpdateCustomer(model);
             return true;
         }
-        catch (OmgCustomerDoesNotExistInDBException e)
+        catch (OmgCustomerDoesNotExistInDbException e)
         {
             return false;
         }

@@ -1,6 +1,7 @@
 using Dapper;
 using Npgsql;
 using WebShoppie.Domain.Model;
+using WebShoppie.Persistence.Exceptions;
 using WebShoppie.Persistence.Interfaces;
 
 namespace WebShoppie.Persistence;
@@ -66,7 +67,7 @@ public class CustomerRepository : ICustomerRepository
 
         var rowsAffected = connection.Execute(query, customerToUpdate);
         if (rowsAffected == 0)
-            throw new OmgCustomerDoesNotExistInDBException(customerToUpdate.CustomerId.ToString());
+            throw new OmgCustomerDoesNotExistInDbException(customerToUpdate.CustomerId.ToString());
     }
 
     public void DeleteCustomer(int Id)
